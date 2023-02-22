@@ -4,7 +4,19 @@ class Scene1 extends Phaser.Scene {
   }
 
   create() {
-    this.add.text(40, 40, "bootGame...");
-    //this.scene.start("playGame");
+
+    const myText = this.add.text(40, 40, "bootGame...");
+    myText.setInteractive();
+    // this.scene.start("playGame");
+
+    // add an event listener for the 'pointerup' event on the text object
+    myText.on('pointerup', () => {
+      // change to another Scene by calling the Scene Manager's start method with the scene key as the argument
+      this.scene.start('playGame');
+    });
   }
+
+  // upload() {
+  //   if ()
+  // }
 }
