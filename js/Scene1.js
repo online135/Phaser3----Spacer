@@ -4,6 +4,7 @@ class Scene1 extends Phaser.Scene {
     this.score = 0;
     this.autoIncrement = 0;
     this.timer = 0;
+    this.paper_icon_offset = 0;
   }
 
   preload() {
@@ -31,7 +32,8 @@ class Scene1 extends Phaser.Scene {
         this.score -= 10;
         this.scoreText.setText('Score: ' + this.score);
         this.load.image('paper_icon2', 'assets/paper_icon.png');
-        this.add.image(50, 300, 'paper_icon');
+        this.add.image(50, 300 + this.paper_icon_offset, 'paper_icon');
+        this.paper_icon_offset += 70;
         this.autoIncrement += 0.1;
         this.autoIncrementText.setText('AutoIncrement: ' + this.autoIncrement);
       }
