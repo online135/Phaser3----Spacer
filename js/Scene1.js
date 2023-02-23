@@ -31,9 +31,12 @@ class Scene1 extends Phaser.Scene {
         this.scoreText.setText('Score: ' + this.score);
         this.load.image('paper_icon2', 'assets/paper_icon.png');
         this.add.image(50, 300, 'paper_icon');
+        this.multipler *= 1.1;
+        this.multiplerText.setText('Multipler: ' + this.multipler);
       }
     });
     this.scoreText = this.add.text(10, 10, 'Score: 0', { fontSize: '32px', fill: '#000' });
+    this.multiplerText = this.add.text(10, 50, 'Multipler: ' + this.multipler, { fontSize: '16px', fill: '#000' });
   }
 
   onClickPaper(pointer, gameObject) {
