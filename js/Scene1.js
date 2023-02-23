@@ -3,6 +3,7 @@ class Scene1 extends Phaser.Scene {
     super({ key: "scene1"});
     this.score = 0;
     this.autoIncrement = 0;
+    this.timer = 0;
   }
 
   preload() {
@@ -44,6 +45,12 @@ class Scene1 extends Phaser.Scene {
     this.scoreText.setText('Score: ' + this.score);
   }
 
-  update() {
+  update(time, delta) {
+    this.timer += delta;
+    if (this.timer >= 1000) {
+        this.score += this.autoIncrement;
+        this.scoreText.setText('Score: ' + this.score);
+        this.timer -= 1000;
+    }
   }
 }
