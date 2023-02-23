@@ -4,12 +4,13 @@ class Scene1 extends Phaser.Scene {
     this.score = 0;
     this.autoIncrement = 0;
     this.timer = 0;
-    this.paper_icon_offset = 0;
+    this.paperIconOffset = 0;
+    this.paperIconPrice = 10;
   }
 
   preload() {
     this.load.image('paper', 'assets/paper.png');
-    this.load.image('paper_icon', 'assets/paper_icon.png');
+    this.load.image('paperIcon', 'assets/paperIcon.png');
   }
 
   create() {
@@ -21,21 +22,26 @@ class Scene1 extends Phaser.Scene {
     // Add click event listener to paper
     this.paper.on('pointerdown', this.onClickPaper, this);
 
-    // Add paper_icon to the scene
-    this.paper_icon = this.add.image(750, 100, 'paper_icon');
-    this.paper_icon.setInteractive(); // Make paper_icon clickable
-    this.paper_icon.visible = true;
+    // Add paperIcon to the scene
+    this.paperIcon = this.add.image(750, 100, 'paperIcon');
+    this.paperIcon.setInteractive(); // Make paperIcon clickable
+    this.paperIcon.visible = true;
+    this.paperIconText = this.add.text(740, 150, this.paperIconPrice, { fontSize: '32px', fill: '#000' });
 
-    // Add click event listener to paper_icon
-    this.paper_icon.on('pointerdown', () => {
-      if (this.score > 10) {
-        this.score -= 10;
+
+    // Add click event listener to paperIcon
+    this.paperIcon.on('pointerdown', () => {
+      if (this.score > this.paperIconPrice) {
+        this.score -= this.paperIconPrice;
         this.scoreText.setText('Score: ' + this.score);
-        this.load.image('paper_icon2', 'assets/paper_icon.png');
-        this.add.image(50, 300 + this.paper_icon_offset, 'paper_icon');
-        this.paper_icon_offset += 70;
+        this.load.image('paperIcon2', 'assets/paperIcon.png');
+        this.add.image(50, 300 + this.paperIconOffset, 'paperIcon');
+        this.paperIconOffset += 70;
         this.autoIncrement += 0.1;
         this.autoIncrementText.setText('AutoIncrement: ' + this.autoIncrement);
+
+        this.paperIconPrice *= 1.5;
+        this.paperIconText .setText(this.paperIconPrice);
       }
     });
     this.scoreText = this.add.text(10, 10, 'Score: 0', { fontSize: '32px', fill: '#000' });
