@@ -2,7 +2,7 @@ class Scene1 extends Phaser.Scene {
   constructor() {
     super({ key: "scene1"});
     this.score = 0;
-    this.multipler = 1;
+    this.autoIncrement = 0;
   }
 
   preload() {
@@ -31,16 +31,16 @@ class Scene1 extends Phaser.Scene {
         this.scoreText.setText('Score: ' + this.score);
         this.load.image('paper_icon2', 'assets/paper_icon.png');
         this.add.image(50, 300, 'paper_icon');
-        this.multipler *= 1.1;
-        this.multiplerText.setText('Multipler: ' + this.multipler);
+        this.autoIncrement += 0.1;
+        this.autoIncrementText.setText('AutoIncrement: ' + this.autoIncrement);
       }
     });
     this.scoreText = this.add.text(10, 10, 'Score: 0', { fontSize: '32px', fill: '#000' });
-    this.multiplerText = this.add.text(10, 50, 'Multipler: ' + this.multipler, { fontSize: '16px', fill: '#000' });
+    this.autoIncrementText = this.add.text(10, 50, 'AutoIncrement: ' + this.autoIncrement, { fontSize: '16px', fill: '#000' });
   }
 
   onClickPaper(pointer, gameObject) {
-    this.score += 1 * this.multipler;
+    this.score += 1;
     this.scoreText.setText('Score: ' + this.score);
   }
 
