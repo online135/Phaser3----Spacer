@@ -33,31 +33,31 @@ class Scene1 extends Phaser.Scene {
     this.paperIcon.on('pointerdown', () => {
       if (this.score > this.paperIconPrice) {
         this.score -= this.paperIconPrice;
-        this.scoreText.setText('Score: ' + this.score);
+        this.scoreText.setText('Score: ' + this.score.toFixed(2));
         this.load.image('paperIcon2', 'assets/paperIcon.png');
         this.add.image(50, 300 + this.paperIconOffset, 'paperIcon');
         this.paperIconOffset += 70;
         this.autoIncrement += 0.1;
-        this.autoIncrementText.setText('AutoIncrement: ' + this.autoIncrement);
+        this.autoIncrementText.setText('AutoIncrement: ' + this.autoIncrement.toFixed(2));
 
         this.paperIconPrice *= 1.5;
-        this.paperIconText .setText(this.paperIconPrice);
+        this.paperIconText .setText(this.paperIconPrice.toFixed(2));
       }
     });
     this.scoreText = this.add.text(10, 10, 'Score: 0', { fontSize: '32px', fill: '#000' });
-    this.autoIncrementText = this.add.text(10, 50, 'AutoIncrement: ' + this.autoIncrement, { fontSize: '16px', fill: '#000' });
+    this.autoIncrementText = this.add.text(10, 50, 'AutoIncrement: ' + this.autoIncrement.toFixed(2), { fontSize: '16px', fill: '#000' });
   }
 
   onClickPaper(pointer, gameObject) {
     this.score += 1;
-    this.scoreText.setText('Score: ' + this.score);
+    this.scoreText.setText('Score: ' + this.score.toFixed(2));
   }
 
   update(time, delta) {
     this.timer += delta;
     if (this.timer >= 1000) {
         this.score += this.autoIncrement;
-        this.scoreText.setText('Score: ' + this.score);
+        this.scoreText.setText('Score: ' + this.score.toFixed(2));
         this.timer -= 1000;
     }
   }
