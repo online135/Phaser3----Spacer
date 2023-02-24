@@ -69,7 +69,7 @@ class Scene1 extends Phaser.Scene {
         this.add.image(100, 300 + this.airplaneIconOffset, 'airplaneIcon');
         
         this.airplaneIconOffset += 70;
-        this.autoIncrement += 0.1;
+        this.autoIncrement += 1;
         this.autoIncrementText.setText('AutoIncrement: ' + this.autoIncrement.toFixed(2));
         this.autoIncrementText.setShadow(1, 1, 'rgba(0,0,0,0.5)', 2);
   
