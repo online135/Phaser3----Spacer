@@ -29,6 +29,21 @@ class Scene1 extends Phaser.Scene {
 
     this.scoreText = this.add.text(10, 10, 'Score: 0', { fontSize: '32px', fill: '#000' });
     this.autoIncrementText = this.add.text(10, 50, 'AutoIncrement: ' + this.autoIncrement.toFixed(2), { fontSize: '16px', fill: '#000' });
+
+
+    // create a new line game object
+    var windowHeight = window.innerHeight;
+    var windowWidth = window.innerWidth;
+    var x1 = windowWidth / 3;
+    var lineLeft = new Phaser.Geom.Line(x1, 0, x1, windowHeight);
+
+    // create a new line game object
+    var lineRight = new Phaser.Geom.Line(500, 300, 500, 600);
+
+    // draw the line graphics
+    var graphics = this.add.graphics();
+    graphics.lineStyle(3, 0xFF0000); // set the line thickness and color
+    graphics.strokeLineShape(lineLeft); // draw the line
   }
 
   onClickPaper(pointer, gameObject) {
