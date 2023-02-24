@@ -1,9 +1,9 @@
 window.onload = function () {
 	var config = {
 			type: Phaser.AUTO,
-			width: 800,
-			height: 600,
-			backgroundColor: 0x333333,
+			width: 1200,
+			height: 800,
+			backgroundColor: 0x222222,
 			scene: [ Scene1, Scene2 ]
 			// scene: {
 			// 		preload: preload,
